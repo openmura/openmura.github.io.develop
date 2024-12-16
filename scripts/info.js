@@ -35,7 +35,10 @@ ver. 8.2.1 軽微な修正
 
 製作者:佐原
 
-©2024 openmura`;
+©2024 openmura
+
+
+`;
     const textElement = document.getElementById("animated-text");
     let index = 0;
 
