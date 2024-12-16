@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100vh;
+}
+a {
+    color: white !important;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.header {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.page {
+    position: relative;
+    flex: 0 0 100vh;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    animation: slideUp 1s ease-in-out;
+}
+
+.page .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
