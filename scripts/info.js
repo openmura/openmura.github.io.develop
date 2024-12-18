@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const versionHistoryText = `
-ver. 8.2.1
-Last-Updated:2024/12/16 17:58 JST
+ver. 8.2.2
+Last-Updated:2024/12/18 19:06 JST
 
 
 history
@@ -31,6 +31,7 @@ ver. 8.1.2 参照の修正
 ver. 8.1.3 表示のバグの修正
 ver. 8.2.0 infoの表示の変更
 ver. 8.2.1 軽微な修正
+ver. 8.2.2 表示の修正
 
 
 製作者:佐原
