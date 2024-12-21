@@ -34,11 +34,12 @@ body {
 .navbar a:hover {
     text-decoration: underline;
 }
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .navbar {
         display: flex;
     }
 }
+*/
 a {
     color: white !important;
     text-decoration: none;
