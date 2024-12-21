@@ -6,6 +6,40 @@ body {
     flex-direction: column-reverse;
     height: 100vh;
 }
+.navbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.navbar .title {
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: bold;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
+@media (min-width: 768px) {
+    .navbar {
+        display: flex;
+    }
+}
 a {
     color: white !important;
     text-decoration: none;
@@ -62,39 +96,5 @@ a:hover {
     to {
         transform: translateY(0);
         opacity: 1;
-    }
-}
-.navbar {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #333;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-}
-
-.navbar .title {
-    margin-right: auto;
-    font-size: 18px;
-    font-weight: bold;
-}
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-}
-.navbar a:hover {
-    text-decoration: underline;
-}
-@media (min-width: 768px) {
-    .navbar {
-        display: flex;
     }
 }
