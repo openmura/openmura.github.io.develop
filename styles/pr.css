@@ -64,3 +64,30 @@ a:hover {
         opacity: 1;
     }
 }
+.navbar {
+    display: none;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    align-items: center;
+}
+
+.navbar .title {
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: bold;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
+@media (min-width: 768px) {
+    .navbar {
+        display: flex;
+    }
+}
