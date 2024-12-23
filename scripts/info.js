@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const versionHistoryText = `
-ver. 8.3.0
-Last-Updated:2024/12/19 20:52 JST
+ver. 9.0.0
+Last-Updated:2024/12/13 13:45 JST
 
 
 history
@@ -33,6 +33,9 @@ ver. 8.2.0 infoの表示の変更
 ver. 8.2.1 軽微な修正
 ver. 8.2.2 表示の修正
 ver. 8.3.0 headタグの修正
+ver. 8.4.0 infoの内容変更
+
+ver. 9.0.0 ban listの公開、Privacy Policyの公開
 
 
 製作者:佐原
