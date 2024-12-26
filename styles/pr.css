@@ -1,3 +1,17 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --panel-background-color: #rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --text-color: #ffffff;
+        --panel-background-color: #rgba(0, 0, 0, 0.5);
+    }
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -18,8 +32,8 @@ a:hover {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #000;
-    color: #fff;
+    background: var(--background-color);
+    color: var(--text-color);
     text-align: center;
     padding: 10px 0;
     z-index: 10;
@@ -49,7 +63,7 @@ a:hover {
 }
 
 .page .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--panel-background-colorcolor);
     padding: 20px;
     border-radius: 10px;
 }
