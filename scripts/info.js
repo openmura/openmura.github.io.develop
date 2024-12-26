@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const versionHistoryText = `
-ver. 9.0.0
-Last-Updated:2024/12/13 13:45 JST
+ver. 10.0.0
+Last-Updated:2024/12/26 16:49 JST
 
 
 history
@@ -36,6 +36,7 @@ ver. 8.3.0 headタグの修正
 ver. 8.4.0 infoの内容変更
 
 ver. 9.0.0 ban listの公開、Privacy Policyの公開
+ver. 10.0.0 ライトモード・ダークモードの実装
 
 
 製作者:佐原
