@@ -1,3 +1,17 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --background-panel: rgba(255, 255, 255, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --text-color: #ffffff;
+        --background-panel: rgba(0, 0, 0, 0.5);
+    }
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -7,7 +21,7 @@ body {
     height: 100vh;
 }
 a {
-    color: white !important;
+    color: var(--text-color) !important;
     text-decoration: none;
 }
 a:hover {
@@ -18,8 +32,8 @@ a:hover {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #000;
-    color: #fff;
+    background: var(--background-color);
+    color: var(--text-color);
     text-align: center;
     padding: 10px 0;
     z-index: 10;
@@ -42,14 +56,14 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--text-color);
     text-align: center;
     padding: 20px;
     animation: slideUp 1s ease-in-out;
 }
 
 .page .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--background-panel);
     padding: 20px;
     border-radius: 10px;
 }
