@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const versionHistoryText = `
-ver. 11.0.0
-Last-Updated:2024/12/26 18:01 JST
+ver. 11.1.0
+Last-Updated:2025/1/11 15:04 JST
 
 
 history
@@ -41,8 +41,10 @@ ver. 10.0.0 ライトモード・ダークモードの実装
 
 ver. 11.0.0 PC版での大幅な修正、軽微な修正
 
+ver. 11.1.0 fontの変更
 
-製作者:佐原
+
+製作者:oopenmura-sys
 
 ©2024 openmura
 
