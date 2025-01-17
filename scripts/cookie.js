@@ -2,7 +2,7 @@ function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
-    document.cookie = `${name}=${value};${expires};path=/https://openmura.github.io/home;SameSite=Lax`;
+    document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
 }
 
 function getCookie(name) {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const expiryDate = new Date(selectedDate);
         const currentDate = new Date();
-        const diffDays = Math.ceil((expiryDate - currentDate) / (1000 * 3600 * 24)); // 日数差を計算
+        const diffDays = Math.ceil((expiryDate - currentDate) / (1000 * 3600 * 24));
 
         setCookie("userAgreed", "true", diffDays);
 
