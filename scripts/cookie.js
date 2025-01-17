@@ -24,7 +24,6 @@ function checkCookie() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const homePage = document.getElementById("home-page");
-    const infoPage = document.getElementById("info-page");
     const rulesPage = document.getElementById("rules-page");
     const agreeButton = document.getElementById("agree-button");
     const expiryInput = document.getElementById("cookie-expiry");
