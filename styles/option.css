@@ -1,0 +1,132 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --background-panel: rgba(255, 255, 255, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --text-color: #ffffff;
+        --background-panel: rgba(0, 0, 0, 0.5);
+    }
+}
+
+body {
+    margin: 0;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    overflow: hidden;
+    display: flex;
+    height: 100vh;
+}
+a {
+    color: var(--text-color) !important;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.header {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px 0;
+    z-index: 10;
+}
+@media (min-width: 1024px) {
+    .header {
+        top: 0;
+        bottom: auto;
+    }
+}
+
+.menu {
+    position: fixed;
+    width: 100%;
+    background: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px 0;
+    z-index: 9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.pc-only {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .pc-only {
+        justify-content: center;
+        gap: 20px;
+        display: flex;
+    }
+
+    .menu {
+        bottom: 0%;
+    }
+}
+
+.menu {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu:hover {
+    opacity: 1;
+}
+
+.menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 86, 34, 0.5);
+    border-radius: 5px;
+}
+
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    overflow-y: scroll;
+}
+
+.page {
+    position: relative;
+    flex: 0 0 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+    animation: slideUp 1s ease-in-out;
+}
+
+.page .overlay {
+    background-color: var(--background-panel);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
