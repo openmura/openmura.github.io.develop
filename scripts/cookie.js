@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const expiryDate = new Date(selectedDate);
         const currentDate = new Date();
-        const diffDays = Math.ceil((expiryDate - currentDate) / (1000 * 3600 * 24));
+        const diffDays = Math.ceil((expiryDate - currentDate) / (1000 * 3600 * 24)); // 日数差を計算
 
         setCookie("userAgreed", "true", diffDays);
 
