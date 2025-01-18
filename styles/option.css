@@ -145,3 +145,63 @@ a:hover {
     display: none;
     border-radius: 5px;
 }
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.clock {
+    text-align: center;
+}
+
+.clock-date {
+    font-size: 25px;
+}
+
+.clock-time {
+    font-size: 50px;
+}
+
+.app-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.app-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    width: 80px;
+    height: 80px;
+    border-radius: 25%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    overflow: hidden;
+}
+
+.app-icon-text {
+    font-size: 16px;
+    color: #333;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 10px;
+    width: 80%;
+    text-overflow: ellipsis;
+}
