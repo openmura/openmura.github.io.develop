@@ -22,17 +22,59 @@
     </head>
 <body>
     <main class="content">
-        <section id="home-page" class="page" style="background-image: url('../images/main.jpg');">
+        <section id="home-page" class="page" style="background-image: url('../images/home+.jpg');">
             <div class="overlay">
-                <h1>HOME</h1>
+                <div class="container">
+                    <div class="clock">
+                        <p class="clock-date"></p>
+                        <p class="clock-time"></p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="overlay">
+                <h2>HOME+</h2>
+                <div class="app-icons">
+                    <a href="index.html" class="app-icon">
+                        <img src="../images/main+.jpg" class="icon-img">
+                    </a>
+                    <a href="bot.html" class="app-icon">
+                        <img src="../images/bot.jpg" class="icon-img">
+                    </a>
+                </div>
                 <br>
-                <p><a href="bot.html">bot一覧</a></p>
-                <p>管理人、副管理人紹介 ←近日実装予定</p>
-                <p><a href="../py.html">製作者から</a></p>
+                <h2>HOME</h2>
+                <div class="app-icons">
+                    <a href="../index.html" class="app-icon">
+                        <img src="../images/icon.png" class="icon-img">
+                    </a>
+                    <a href="../rule.html" class="app-icon">
+                        <img src="../images/rule.jpg" class="icon-img">
+                    </a>
+                    <a href="../url.html" class="app-icon">
+                        <img src="../images/ser.jpg" class="icon-img">
+                    </a>
+                    <a href="../info.html" class="app-icon">
+                        <img src="../images/info.jpg" class="icon-img">
+                    </a>
+                    <a href="../py.html" class="app-icon">
+                        <img src="../images/py.jpg" class="icon-img">
+                    </a>
+                </div>
                 <br>
-                <h2>Cookie削除</h2>
-                <p>設定されたクッキーを削除するには、以下のボタンをクリックしてください。</p>
-                <button id="delete-cookie-button">クッキーを削除</button>
+                <h2>DEL</h2>
+                <div class="app-icons">
+                    <a id="delete-cookie-button" class="app-icon">
+                        <img src="../images/del.jpg" class="icon-img">
+                    </a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="overlay">
+                <p>Version: 13.0.0</p>
+                <p>Build Number: <span id="build-number">Loading...</span></p>
+                <p>Last-Updated:2025/01/18 16:00 JST</p>
             </div>
         </section>
         <section id="rules-page" class="page">
@@ -59,8 +101,10 @@
     </main>
     <script src="../scripts/cookie.js"></script>
     <script src="../scripts/delete.js"></script>
+    <script src="../scripts/home.js"></script>
     <script src="../scripts/date.js"></script>
     <script src="../scripts/pr.js"></script>
     <script src="../scripts/alert.js"></script>
+    <script src="../scripts/build.js"></script>
 </body>
 </html>
