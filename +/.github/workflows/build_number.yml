@@ -1,9 +1,31 @@
-fetch("build_number.txt")
-    .then(response => response.text())
-    .then(buildNumber => {
-        document.getElementById("build-number").innerText = buildNumber;
-    })
-    .catch(err => {
-        document.getElementById("build-number").innerText = "Error loading build number";
-        console.error(err);
-    });
+name: Update Build Number
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+
+    - name: Insert Commit SHA into HTML
+      run: |
+        python insert_commit_sha.py
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add index.html
+        git commit -m "Update build number with commit SHA"
+        git push
