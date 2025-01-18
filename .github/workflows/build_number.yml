@@ -18,5 +18,5 @@ jobs:
       with:
         python-version: "3.x"
 
-    - name: Insert Commit SHA into HTML
-      run: python insert_commit_sha.py
+    - name: Insert Commit SHA into all HTML files
+      run: python scripts/build.py
