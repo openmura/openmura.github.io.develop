@@ -19,13 +19,4 @@ jobs:
         python-version: "3.x"
 
     - name: Insert Commit SHA into HTML
-      run: |
-        python insert_commit_sha.py
-
-    - name: Commit and push changes
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git add index.html
-        git commit -m "Update build number with commit SHA"
-        git push
+      run: python insert_commit_sha.py
