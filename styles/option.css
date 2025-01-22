@@ -100,13 +100,11 @@ a:hover {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
 }
 
 .page {
     position: relative;
     flex: 0 0 100vh;
-    scroll-snap-align: start;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -196,15 +194,6 @@ a:hover {
     overflow: hidden;
 }
 
-.app-icon-text {
-    font-size: 16px;
-    color: #333;
-    font-weight: normal;
-    text-align: center;
-    margin-top: 10px;
-    width: 80%;
-    text-overflow: ellipsis;
-}
 .code{
     width: 100%;
 }
