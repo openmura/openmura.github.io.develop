@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: LIFF ID を埋め込む
-        run: sed -i 's/__LIFF_ID__/${{ secrets.LIFF_ID }}/g' index.html
+        run: sed -i 's/__LIFF_ID__/${{ secrets.LIFF_ID }}/g' test.html
 
       - name: GitHub Pages へデプロイ
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # デプロイ先のブランチ
+          branch: main  # デプロイ先のブランチ
           folder: .         # デプロイするフォルダ（ルートディレクトリの場合 `.`）
