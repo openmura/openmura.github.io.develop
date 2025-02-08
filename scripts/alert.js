@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const loader = document.getElementById("loader");
     window.onload = function () {
     const liff = prompt('オープンチャットからの表示は禁止です。');
-        if (liff) = "test" {
+        if (liff === "test") {
         }else{
             location.href = 'https://oprnmura.github.io/home';
         }
