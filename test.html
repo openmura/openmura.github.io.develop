@@ -8,21 +8,23 @@
 <body>
     <h1>LIFFアプリ</h1>
     <button onclick="getProfile()">プロフィール取得</button>
+    <p id="profile-info"></p> <!-- ここにプロフィール情報を表示 -->
+
     <script>
         async function initLiff() {
             await liff.init({ liffId: "__LIFF_ID__" }); // プレースホルダー
             console.log("LIFF initialized");
         }
-        
+
         async function getProfile() {
             if (!liff.isLoggedIn()) {
                 liff.login();
                 return;
             }
             const profile = await liff.getProfile();
-            alert(`こんにちは, ${profile.displayName}`);
+            document.getElementById("profile-info").innerText = `こんにちは, ${profile.displayName}`;
         }
-        
+
         initLiff();
     </script>
 </body>
