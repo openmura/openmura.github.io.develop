@@ -1,0 +1,23 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # デプロイをトリガーするブランチ
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+
+      - name: LIFF ID を埋め込む
+        run: sed -i 's/__LIFF_ID__/${{ secrets.LIFF_ID }}/g' index.html
+
+      - name: GitHub Pages へデプロイ
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # デプロイ先のブランチ
+          folder: .         # デプロイするフォルダ（ルートディレクトリの場合 `.`）
