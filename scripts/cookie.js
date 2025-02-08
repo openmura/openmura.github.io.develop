@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("有効期限の日付を選択してください。");
             return;
         }else{
-            lcation.reload();
+            location.reload();
         }
 
         const expiryDate = new Date(selectedDate);
