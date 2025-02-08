@@ -1,3 +1,8 @@
+    const liff = prompt('オープンチャットからの表示は禁止です。');
+        if (liff === "test") {
+        }else{
+            location.href = 'https://oprnmura.github.io/home';
+        }
 document.addEventListener("DOMContentLoaded", function () {
     const loader = document.getElementById("loader");
     window.onload = function () {
@@ -6,11 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
         loader.style.display = "none";
     }, 1000);
     };
-    const liff = prompt('オープンチャットからの表示は禁止です。');
-        if (liff === "test") {
-        }else{
-            location.href = 'https://oprnmura.github.io/home';
-        }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
