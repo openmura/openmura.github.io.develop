@@ -8,10 +8,10 @@
    git clone https://github.com/openmura/home.git```
 2. 依存関係をインストール
    ```bash
-    npm install```
+    npm install
 3. プロジェクトを実行
    ```bash
-    npm start```
+    npm start
 ## 使用方法
 - ホームページでルールの確認などを行えます。
 - 他のページへもアクセスすることができます。
