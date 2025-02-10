@@ -1,7 +1,7 @@
 # レポジトリについて
 これは、HTML,CSS,JavaScriptで構成されています。
-![モックアップ](screenshot1.png)
-![モックアップ](screenshot2.png)
+![モックアップ](images/screenshot1.png)
+![モックアップ](images/screenshot2.png)
 ## インストール方法
 1. リポジトリをクローン
    ```bash
