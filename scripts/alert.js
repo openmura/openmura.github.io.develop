@@ -1,12 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const loader = document.getElementById("loader");
-    window.onload = function () 
-    setTimeout(function () {
-        loader.style.display = "none";
-    }, 1000);
-    };
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
     const isFontLoaded = document.fonts.check('16px "Zen Maru Gothic"');
