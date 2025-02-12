@@ -5,7 +5,7 @@
 ## インストール方法
 1. リポジトリをクローン
    ```bash
-   git clone https://github.com/openmura/home.git```
+   git clone https://github.com/openmura/home.git
 2. 依存関係をインストール
    ```bash
     npm install
