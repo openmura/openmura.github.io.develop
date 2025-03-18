@@ -1,4 +1,5 @@
 # レポジトリについて
+   2025/03/18 11:33 jst
 これは、HTML,CSS,JavaScriptで構成されています。
 ![モックアップ](images/screenshot1.png)
 ![モックアップ](images/screenshot2.png)
