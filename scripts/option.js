@@ -35,4 +35,7 @@ function updateDateTime() {
     setTimeout(() => {
       document.getElementById('loading').classList.add('hidden');
     }, 500);
+    document.getElementById("userName").innerHTML = localStorage.getItem("userName");
+    document.getElementById("lastVisited").innerHTML = localStorage.getItem("lastVisited") ;
+    document.getElementById("agreeDate").innerHTML = localStorage.getItem("agreeDate") ;
   };
