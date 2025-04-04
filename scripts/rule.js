@@ -32,11 +32,14 @@ function closePopup() {
 function agree() {
     localStorage.setItem("agree", "true");
     if (localStorage.getItem("agreeDate")) {
-        alert("既に同意しています。")
+        alert("既に同意しています。");
     } else {
         const agreeDate = new Date();
         localStorage.setItem("agreeDate", formatDate(agreeDate.toISOString()));
+        location.href ="";
     }
+    alert("ルールを確認したところへ送信してください");
+    location.href = "https://line.me/R/msg/text/%2F%E3%83%AB%E3%83%BC%E3%83%AB%E8%A6%8B%E3%81%9F%E3%82%88%EF%BC%81";
     closePopup()
 }
 
@@ -45,19 +48,6 @@ function disagree() {
     document.body.innerHTML = "<h1>アクセス拒否</h1><p>このページにはアクセスできません。</p>";
     return;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme) {
-        document.documentElement.setAttribute("data-theme", savedTheme);
-    } else {
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const defaultTheme = prefersDarkScheme ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", defaultTheme);
-    }
-
-});
 
 function userPopup() {
     if (localStorage.getItem("userName")) {
@@ -71,6 +61,7 @@ function webAgree() {
     var userName = prompt("username","guest");
     localStorage.setItem("userName", userName);
     disAgree()
+    location.href="";
 }
 
 function disAgree() {

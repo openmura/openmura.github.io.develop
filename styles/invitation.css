@@ -1,0 +1,75 @@
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: black;
+    color: gold;
+    text-align: center;
+    padding: 5px;
+}
+
+.container {
+    max-width: 90%;
+    margin: auto;
+    padding: 5px;
+    border: 2px solid gold;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-size: 2em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+a {
+    color: gold;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 20px;
+    background-color: gold;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: orange;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body * {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+body *:nth-child(1) { animation-delay: 1.0s; }
+body *:nth-child(2) { animation-delay: 2.0s; }
+body *:nth-child(3) { animation-delay: 3.0s; }
+body *:nth-child(4) { animation-delay: 4.0s; }
+body *:nth-child(5) { animation-delay: 5.0s; }
+body *:nth-child(6) { animation-delay: 6.0s; }
+body *:nth-child(7) { animation-delay: 7.0s; }
