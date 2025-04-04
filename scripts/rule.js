@@ -40,8 +40,11 @@ function agree() {
     }
     alert("ルールを確認したところへ送信してください");
     location.href = "https://line.me/R/msg/text/%2F%E3%83%AB%E3%83%BC%E3%83%AB%E8%A6%8B%E3%81%9F%E3%82%88%EF%BC%81";
-    location.href = "https://openmura.github.io"
     closePopup()
+}
+
+function home(){
+    location.href = "https://openmura.github.io"
 }
 
 function disagree() {
