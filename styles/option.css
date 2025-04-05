@@ -200,3 +200,7 @@ a:hover {
   #weather {
     font-size: 24px;
   }
+
+  .hiddenDev {
+    display: none;
+}
