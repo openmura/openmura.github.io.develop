@@ -44,7 +44,7 @@ function agree() {
 }
 
 function home(){
-    location.href = "https://openmura.github.io"
+    location.href = "index.html"
 }
 
 function disagree() {
@@ -78,4 +78,12 @@ function userClose(){
 
 function userDel() {
     disagree()
+}
+
+function addDev(){
+    localStorage.setItem("dev","1");
+}
+
+function removeDev(){
+    localStorage.removeItem("dev");
 }

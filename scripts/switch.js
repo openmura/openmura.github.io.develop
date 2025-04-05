@@ -23,3 +23,12 @@ window.onload = function() {
         location.href="rule.html"
     }
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+    const devValue = localStorage.getItem("dev");
+    if (devValue !== "1") {
+        document.querySelectorAll(".dev").forEach(el => {
+            el.classList.add("hiddenDev");
+        })
+    }
+})
