@@ -21,6 +21,39 @@
 <pre id="output"></pre>
 
 <script src="scripts/utf.js"></script>
+<h1>文字列安全性チェッカー</h1>
 
+<p>
+このツールは、ユーザーが入力した文字列に対して、
+<strong>制御文字</strong>・<strong>結合文字（Zalgo文字）</strong>・
+<strong>双方向制御文字（Bidi）</strong>・
+<strong>ファイル名やURLっぽい文字列</strong>などを検出し、
+クラッシュや誤動作の原因となりうる不正な文字列を識別します。
+</p>
+
+<h2>主な機能</h2>
+<ul>
+  <li>
+    <strong>結合文字の検出</strong><br>
+    Unicodeの範囲 <code>U+0300</code>～<code>U+036F</code> に該当するZalgo文字などを検出します。
+  </li>
+  <li>
+    <strong>制御文字や異常Unicodeの検出</strong><br>
+    以下のような特殊な文字を検出します:
+    <ul>
+      <li><code>U+200B</code>～<code>U+200F</code>（ZWSP、LRM、RLMなど）</li>
+      <li><code>U+202A</code>～<code>U+202E</code>（双方向制御文字）</li>
+      <li><code>U+FFFE</code>, <code>U+FFFF</code>（非文字）</li>
+    </ul>
+  </li>
+  <li>
+    <strong>ファイル名やURLっぽい文字列の検出</strong><br>
+    <code>.exe</code>, <code>.jpg</code>, <code>file://</code>, <code>data:</code> などのパターンを含む場合、危険と判定します。
+  </li>
+  <li>
+    <strong>文字列長のチェック</strong><br>
+    5000文字を超える長すぎる文字列を警告します。
+  </li>
+</ul>
 </body>
 </html>
