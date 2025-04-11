@@ -25,6 +25,10 @@ function showPopup() {
     document.getElementById('popup').style.display = 'flex';
 }
 
+function utf() {
+    location.href="../utf.html";
+}
+
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
