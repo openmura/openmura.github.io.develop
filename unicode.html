@@ -1,0 +1,686 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unicodeとは？ </title><style>
+    /* cspell:disable-file */
+    /* webkit printing magic: print all background colors */
+    html {
+        -webkit-print-color-adjust: exact;
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    @media only screen {
+        body {
+            margin: 2em auto;
+            max-width: 900px;
+            color: rgb(55, 53, 47);
+        }
+    }
+    
+    body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+    
+    a,
+    a.visited {
+        color: inherit;
+        text-decoration: underline;
+    }
+    
+    .pdf-relative-link-path {
+        font-size: 80%;
+        color: #444;
+    }
+    
+    h1,
+    h2,
+    h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+    }
+    
+    h1 {
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.25rem;
+    }
+    
+    .source {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 1.5em;
+        word-break: break-all;
+    }
+    
+    .callout {
+        border-radius: 3px;
+        padding: 1rem;
+    }
+    
+    figure {
+        margin: 1.25em 0;
+        page-break-inside: avoid;
+    }
+    
+    figcaption {
+        opacity: 0.5;
+        font-size: 85%;
+        margin-top: 0.5em;
+    }
+    
+    mark {
+        background-color: transparent;
+    }
+    
+    .indented {
+        padding-left: 1.5em;
+    }
+    
+    hr {
+        background: transparent;
+        display: block;
+        width: 100%;
+        height: 1px;
+        visibility: visible;
+        border: none;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    }
+    
+    img {
+        max-width: 100%;
+    }
+    
+    @media only print {
+        img {
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    }
+    
+    @page {
+        margin: 1in;
+    }
+    
+    .collection-content {
+        font-size: 0.875rem;
+    }
+    
+    .column-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .column {
+        padding: 0 1em;
+    }
+    
+    .column:first-child {
+        padding-left: 0;
+    }
+    
+    .column:last-child {
+        padding-right: 0;
+    }
+    
+    .table_of_contents-item {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        padding: 0.125rem;
+    }
+    
+    .table_of_contents-indent-1 {
+        margin-left: 1.5rem;
+    }
+    
+    .table_of_contents-indent-2 {
+        margin-left: 3rem;
+    }
+    
+    .table_of_contents-indent-3 {
+        margin-left: 4.5rem;
+    }
+    
+    .table_of_contents-link {
+        text-decoration: none;
+        opacity: 0.7;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+        border-collapse: collapse;
+    }
+    
+    table {
+        border-left: none;
+        border-right: none;
+    }
+    
+    th,
+    td {
+        font-weight: normal;
+        padding: 0.25em 0.5em;
+        line-height: 1.5;
+        min-height: 1.5em;
+        text-align: left;
+    }
+    
+    th {
+        color: rgba(55, 53, 47, 0.6);
+    }
+    
+    ol,
+    ul {
+        margin: 0;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+    }
+    
+    li > ol:first-child,
+    li > ul:first-child {
+        margin-block-start: 0.6em;
+    }
+    
+    ul > li {
+        list-style: disc;
+    }
+    
+    ul.to-do-list {
+        padding-inline-start: 0;
+    }
+    
+    ul.to-do-list > li {
+        list-style: none;
+    }
+    
+    .to-do-children-checked {
+        text-decoration: line-through;
+        opacity: 0.375;
+    }
+    
+    ul.toggle > li {
+        list-style: none;
+    }
+    
+    ul {
+        padding-inline-start: 1.7em;
+    }
+    
+    ul > li {
+        padding-left: 0.1em;
+    }
+    
+    ol {
+        padding-inline-start: 1.6em;
+    }
+    
+    ol > li {
+        padding-left: 0.2em;
+    }
+    
+    .mono ol {
+        padding-inline-start: 2em;
+    }
+    
+    .mono ol > li {
+        text-indent: -0.4em;
+    }
+    
+    .toggle {
+        padding-inline-start: 0em;
+        list-style-type: none;
+    }
+    
+    /* Indent toggle children */
+    .toggle > li > details {
+        padding-left: 1.7em;
+    }
+    
+    .toggle > li > details > summary {
+        margin-left: -1.1em;
+    }
+    
+    .selected-value {
+        display: inline-block;
+        padding: 0 0.5em;
+        background: rgba(206, 205, 202, 0.5);
+        border-radius: 3px;
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        white-space: nowrap;
+    }
+    
+    .collection-title {
+        display: inline-block;
+        margin-right: 1em;
+    }
+    
+    .page-description {
+        margin-bottom: 2em;
+    }
+    
+    .simple-table {
+        margin-top: 1em;
+        font-size: 0.875rem;
+        empty-cells: show;
+    }
+    .simple-table td {
+        height: 29px;
+        min-width: 120px;
+    }
+    
+    .simple-table th {
+        height: 29px;
+        min-width: 120px;
+    }
+    
+    .simple-table-header-color {
+        background: rgb(247, 246, 243);
+        color: black;
+    }
+    .simple-table-header {
+        font-weight: 500;
+    }
+    
+    time {
+        opacity: 0.5;
+    }
+    
+    .icon {
+        display: inline-block;
+        max-width: 1.2em;
+        max-height: 1.2em;
+        text-decoration: none;
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+    }
+    
+    img.icon {
+        border-radius: 3px;
+    }
+    
+    .user-icon {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 100%;
+        margin-right: 0.5rem;
+    }
+    
+    .user-icon-inner {
+        font-size: 0.8em;
+    }
+    
+    .text-icon {
+        border: 1px solid #000;
+        text-align: center;
+    }
+    
+    .page-cover-image {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        max-height: 30vh;
+    }
+    
+    .page-header-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .page-header-icon-with-cover {
+        margin-top: -0.72em;
+        margin-left: 0.07em;
+    }
+    
+    .page-header-icon img {
+        border-radius: 3px;
+    }
+    
+    .link-to-page {
+        margin: 1em 0;
+        padding: 0;
+        border: none;
+        font-weight: 500;
+    }
+    
+    p > .user {
+        opacity: 0.5;
+    }
+    
+    td > .user,
+    td > time {
+        white-space: nowrap;
+    }
+    
+    input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-right: 0.6em;
+        vertical-align: middle;
+    }
+    
+    p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .image {
+        border: none;
+        margin: 1.5em 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+    
+    .code,
+    code {
+        background: rgba(135, 131, 120, 0.15);
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+        tab-size: 2;
+    }
+    
+    code {
+        color: #eb5757;
+    }
+    
+    .code {
+        padding: 1.5em 1em;
+    }
+    
+    .code-wrap {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    
+    .code > code {
+        background: none;
+        padding: 0;
+        font-size: 100%;
+        color: inherit;
+    }
+    
+    blockquote {
+        font-size: 1.25em;
+        margin: 1em 0;
+        padding-left: 1em;
+        border-left: 3px solid rgb(55, 53, 47);
+    }
+    
+    .bookmark {
+        text-decoration: none;
+        max-height: 8em;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+    
+    .bookmark-title {
+        font-size: 0.85em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.75em;
+        white-space: nowrap;
+    }
+    
+    .bookmark-text {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .bookmark-info {
+        flex: 4 1 180px;
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .bookmark-image {
+        width: 33%;
+        flex: 1 1 180px;
+        display: block;
+        position: relative;
+        object-fit: cover;
+        border-radius: 1px;
+    }
+    
+    .bookmark-description {
+        color: rgba(55, 53, 47, 0.6);
+        font-size: 0.75em;
+        overflow: hidden;
+        max-height: 4.5em;
+        word-break: break-word;
+    }
+    
+    .bookmark-href {
+        font-size: 0.75em;
+        margin-top: 0.25em;
+    }
+    
+    .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+    .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+    .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+    .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+    .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+    .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+    .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+    .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+    .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+    .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+    .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+    .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+    .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .highlight-default {
+        color: rgba(55, 53, 47, 1);
+    }
+    .highlight-gray {
+        color: rgba(120, 119, 116, 1);
+        fill: rgba(120, 119, 116, 1);
+    }
+    .highlight-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .highlight-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .highlight-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .highlight-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .highlight-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .highlight-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .highlight-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .highlight-red {
+        color: rgba(212, 76, 71, 1);
+        fill: rgba(212, 76, 71, 1);
+    }
+    .highlight-default_background {
+        color: rgba(55, 53, 47, 1);
+    }
+    .highlight-gray_background {
+        background: rgba(248, 248, 247, 1);
+    }
+    .highlight-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .highlight-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .highlight-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .highlight-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .highlight-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .highlight-purple_background {
+        background: rgba(248, 243, 252, 1);
+    }
+    .highlight-pink_background {
+        background: rgba(252, 241, 246, 1);
+    }
+    .highlight-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .block-color-default {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray {
+        color: rgba(120, 119, 116, 1);
+        fill: rgba(120, 119, 116, 1);
+    }
+    .block-color-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .block-color-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .block-color-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .block-color-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .block-color-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .block-color-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .block-color-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .block-color-red {
+        color: rgba(212, 76, 71, 1);
+        fill: rgba(212, 76, 71, 1);
+    }
+    .block-color-default_background {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray_background {
+        background: rgba(248, 248, 247, 1);
+    }
+    .block-color-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .block-color-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .block-color-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .block-color-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .block-color-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .block-color-purple_background {
+        background: rgba(248, 243, 252, 1);
+    }
+    .block-color-pink_background {
+        background: rgba(252, 241, 246, 1);
+    }
+    .block-color-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .select-value-color-uiBlue { background-color: undefined; }
+    .select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+    .select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+    .select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+    .select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+    .select-value-color-transparentGray { background-color: undefined; }
+    .select-value-color-translucentGray { background-color: undefined; }
+    .select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+    .select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+    .select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+    .select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+    .select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+    .select-value-color-pageGlass { background-color: undefined; }
+    .select-value-color-washGlass { background-color: undefined; }
+    
+    .checkbox {
+        display: inline-flex;
+        vertical-align: text-bottom;
+        width: 16;
+        height: 16;
+        background-size: 16px;
+        margin-left: 2px;
+        margin-right: 5px;
+    }
+    
+    .checkbox-on {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+    
+    .checkbox-off {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+        
+    </style></head><body><article id="1c749c84-6645-808b-9d80-d6884977e773" class="page sans"><header><h1 class="page-title"><strong>Unicodeとは？ </strong></h1><p class="page-description"></p></header><div class="page-body"><p id="1d349c84-6645-80e7-bc27-c531bd569465" class=""><mark class="highlight-gray">目次</mark></p><nav id="1d349c84-6645-8088-8d82-de4c3488adaf" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c749c84-6645-8057-bd35-c56253feb1c3"><strong>1. はじめに</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c749c84-6645-8071-80c7-da49ba99e1ae"><strong>2. Unicodeとは？</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-80cd-ba35-c2bb5ddb3488"><strong>2-1. Unicodeの目的と構造</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-805e-aabb-d7818623fb52"><strong>2-2. Unicodeとエンコーディングの違い</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c749c84-6645-80dd-bd8b-dd9a76517c11"><strong>3. Unicodeを悪用した攻撃手法</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-8061-946e-c7a2bd118744"><strong>3-1. Unicodeエスケープシーケンス攻撃</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-8014-92a0-e1f5feb3a9c4"><strong>3-2. バッファオーバーフロー攻撃</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-8094-b49f-fce91573a183"><strong>3-3. Unicodeノーマライゼーション攻撃</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-806f-9166-f16e5799b44c"><strong>3-4. サロゲートペア攻撃</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-8011-8ff6-c8712f34a1b0"><strong>3-5. Unicodeファジング攻撃</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-8008-a8db-c071e6f30e06"><strong>3-6. IDN Homoglyph Attack（国際化ドメイン名ホモグリフ攻撃）</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c749c84-6645-80af-a0e1-fd24299680c9"><strong>4. 「Unicode禁止」の本当の意味</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1c749c84-6645-8029-9993-ffcbfd01fc6e"><strong>4-1. エスケープシーケンスの適切な処理</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1c749c84-6645-80da-946e-ffd62e9cc212"><strong>4-2. バッファオーバーフローの防止</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1c749c84-6645-804a-90d5-e1bbb773d3f3"><strong>4-3. ノーマライゼーション攻撃への対策</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1c749c84-6645-8033-9d6e-d090c553067c"><strong>4-4. サロゲートペアの適切な処理</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1c749c84-6645-805a-a813-f4df3fb62195"><strong>4-5. IDNホモグリフ攻撃の防止</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1d349c84-6645-80ac-9d9f-f74cde838596">5.実際にあった例</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-80bd-9057-fb5becbb7f60">5-1. シンハラ語の文字列バグ（2018年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-80b3-9d74-d91be9a6e827">5-2. テルグ語の文字列バグ（2018年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-80a7-80e9-c6b186dfbedf">5-3. ブラックドットバグ（2018年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-8088-b6fa-d69d30747009">5-4. イタリア国旗＋ゼロ幅非接合子（2019年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-80b1-922a-eddd07bdf1c5">5-5. 特定のアラビア語文字列バグ（2020年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-800d-8698-d32732ea285e">5-6. 「Taiwan」絵文字バグ（2018年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-807a-8323-dea16734017b">5-7. Punycode URLバグ（2017年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-8028-8c23-e0820b312b1b">5-8. 「Zalgo Text」バグ（2021年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-80ea-8a78-d8d982ddfe23">5-9. ゼロ幅スペース「ZWSP」連打バグ（2019年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-804b-aafa-f5c85e610111">5-10. 特定の「文字の組み合わせ」によるクラッシュバグ（2020年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-80c5-9c44-c050a2b4b644">5-11. VS16（バリアントセレクター16）を含む文字列バグ（2016年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-8052-96e0-eb03efd97cf7">5-12. Unicode「トルコ語の&quot;i&quot;」バグ（2013年）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d349c84-6645-8037-b676-ec962cde00bc">5-13. Unicode「LRI（Left-to-Right Isolate）」バグ（2015年）</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c749c84-6645-8060-ab6d-f8698c2b212e"><strong>6. まとめ</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1d349c84-6645-8054-bda6-ebc70c7208ea">7. 最後に</a></div></nav><h1 id="1c749c84-6645-8057-bd35-c56253feb1c3" class=""><strong>1. はじめに</strong></h1><hr id="1c749c84-6645-80c2-b269-e0fd59fb1b5e"/><p id="1c749c84-6645-809a-9cfd-d0cde0b12b4b" class="">Unicodeは、世界中のすべての文字を統一的に扱うために設計された文字コードの標準規格です。日本語、英語、中国語、アラビア語、さらには絵文字まで、あらゆる文字を一意の番号（コードポイント）で管理することで、異なる環境でも文字化けせずにデータをやり取りできるようになっています。</p><p id="1c749c84-6645-8064-b338-fe6fd693c4bd" class="">一方で、Unicodeを悪用した攻撃手法が存在し、それらを防ぐ目的で当オープンチャットは「Unicode禁止」という概念を提唱することがあります。しかし、「Unicode禁止」とは<strong>UTF-8やUTF-16といったUnicodeベースの文字コード全体を禁止することではなく、特定のセキュリティリスクを持つUnicode関連の攻撃を防ぐための対策を指す</strong>ものです。</p><p id="1c749c84-6645-80df-9492-fcdd8a237d12" class="">本記事では、Unicodeの基本概念を整理するとともに、Unicodeに関連するセキュリティリスクについて詳しく解説します。</p><h1 id="1c749c84-6645-8071-80c7-da49ba99e1ae" class=""><strong>2. Unicodeとは？</strong></h1><h2 id="1c749c84-6645-80cd-ba35-c2bb5ddb3488" class=""><strong>2-1. Unicodeの目的と構造</strong></h2><hr id="1c749c84-6645-8095-a253-c8ca7a91abf5"/><p id="1c749c84-6645-8074-86c9-dfd4572c77ae" class="">Unicodeの目的は、世界中のすべての文字に一意のコードポイントを割り当て、どの環境でも統一的に扱えるようにすることです。例えば、以下のように各文字には特定のコードポイントが対応しています。</p><table id="1c749c84-6645-8008-831b-de9c3a48bfc6" class="simple-table"><tbody><tr id="1c749c84-6645-80c4-ba02-ec7842f6360d"><td id="&lt;c=m" class="">文字</td><td id="s@E_" class="">コードポイント（16進数表記）</td></tr><tr id="1c749c84-6645-80e6-877c-e97d0dc31005"><td id="&lt;c=m" class="">A</td><td id="s@E_" class="">U+0041</td></tr><tr id="1c749c84-6645-80ff-8760-e1c67aaa588a"><td id="&lt;c=m" class="">あ</td><td id="s@E_" class="">U+3042</td></tr><tr id="1c749c84-6645-80ce-8c33-f29a37006607"><td id="&lt;c=m" class="">中</td><td id="s@E_" class="">U+4E2D</td></tr><tr id="1c749c84-6645-802f-91e4-fc21d74f2b00"><td id="&lt;c=m" class="">😊</td><td id="s@E_" class="">U+1F60A</td></tr></tbody></table><p id="1c749c84-6645-807a-aea0-e8df05007b11" class="">これにより、異なるプラットフォーム間での互換性を確保し、文字化けの問題を解決することができます。</p><h2 id="1c749c84-6645-805e-aabb-d7818623fb52" class=""><strong>2-2. Unicodeとエンコーディングの違い</strong></h2><hr id="1c749c84-6645-80a9-93e7-d63fb485f6b3"/><p id="1c749c84-6645-8022-90b9-dee97710a4ef" class="">Unicode自体は「文字とコードポイントの対応表」ですが、実際のデータとして扱うためには「エンコーディング」が必要です。</p><p id="1c749c84-6645-802e-97cb-d97ba8bc09fc" class="">代表的なUnicodeのエンコーディング方式には、次のようなものがあります。</p><ul id="1c749c84-6645-807b-a22c-cca9de9d529f" class="bulleted-list"><li style="list-style-type:disc"><strong>UTF-8</strong>（可変長エンコーディング。現在最も広く使用される）</li></ul><ul id="1c749c84-6645-8004-8cf3-dad305d0e386" class="bulleted-list"><li style="list-style-type:disc"><strong>UTF-16</strong>（2バイトまたは4バイトで表現。Windowsの内部処理などで使用）</li></ul><ul id="1c749c84-6645-8088-91d0-d4569a76ffad" class="bulleted-list"><li style="list-style-type:disc"><strong>UTF-32</strong>（4バイト固定長。データサイズが大きいため実用例は少ない）</li></ul><p id="1c749c84-6645-8093-a844-eddf9d0f0c45" class="">このように、Unicodeとエンコーディングは別の概念であり、「Unicode禁止＝UTF-8の禁止」ではないことを理解することが重要です。</p><h1 id="1c749c84-6645-80dd-bd8b-dd9a76517c11" class=""><strong>3. Unicodeを悪用した攻撃手法</strong></h1><hr id="1c749c84-6645-8023-9329-d054422b9531"/><p id="1c749c84-6645-8005-b994-f68eafd18d93" class="">Unicodeは強力な規格ですが、その特性を悪用したセキュリティ攻撃が存在します。「Unicode禁止」という概念は、こうした攻撃を防ぐために考えられたものです。代表的なUnicode攻撃を以下に紹介します。</p><h2 id="1c749c84-6645-8061-946e-c7a2bd118744" class=""><strong>3-1. Unicodeエスケープシーケンス攻撃</strong></h2><hr id="1c749c84-6645-8006-9dce-c3237fd89aa5"/><p id="1c749c84-6645-802e-b9a5-d58e787294a6" class="">Unicodeエスケープ（例: <code>\uXXXX</code>）を利用し、通常の文字列フィルタを回避する攻撃です。たとえば、SQLインジェクション対策のフィルタが <code>SELECT</code> をブロックしている場合でも、<code>\u0053\u0045\u004C\u0045\u0043\u0054</code>（Unicodeで表した&quot;SELECT&quot;）を使えば回避できる可能性があります。</p><h2 id="1c749c84-6645-8014-92a0-e1f5feb3a9c4" class=""><strong>3-2. バッファオーバーフロー攻撃</strong></h2><hr id="1c749c84-6645-80d4-9827-f1238da1cd10"/><p id="1c749c84-6645-80b1-bee1-f18340382535" class="">特定のUnicode文字（特に長いバイト列を持つもの）を入力することで、メモリ管理の不備を突いてアプリケーションをクラッシュさせたり、任意のコードを実行させたりする攻撃です。</p><h2 id="1c749c84-6645-8094-b49f-fce91573a183" class=""><strong>3-3. Unicodeノーマライゼーション攻撃</strong></h2><hr id="1c749c84-6645-801b-b18c-e0b9a6850295"/><p id="1c749c84-6645-8047-b99f-d9e35997d26d" class="">Unicodeには<strong>複数の表現が同じ文字として扱われる</strong>ノーマライゼーションの仕組みがあります。攻撃者はこの仕組みを利用し、フィルタ回避やハッシュ値の不一致を引き起こすことができます。</p><h2 id="1c749c84-6645-806f-9166-f16e5799b44c" class=""><strong>3-4. サロゲートペア攻撃</strong></h2><hr id="1c749c84-6645-8092-aca4-c7a1b394d3b3"/><p id="1c749c84-6645-8037-9885-d356e5e54125" class="">UTF-16では、BMP（基本多言語面）外の文字を「サロゲートペア」として2つの16ビット値で表現します。アプリケーションがこれを適切に処理できない場合、バグやクラッシュを引き起こす可能性があります。</p><h2 id="1c749c84-6645-8011-8ff6-c8712f34a1b0" class=""><strong>3-5. Unicodeファジング攻撃</strong></h2><hr id="1c749c84-6645-8088-95b0-fe0fa3e7ccaf"/><p id="1c749c84-6645-8029-bb21-fa15993c8d13" class="">大量のUnicode文字をランダムに送信し、アプリケーションの異常動作やクラッシュを引き起こす手法です。特に、未対応の文字や特殊な制御文字を含む入力が原因で、想定外の挙動を引き起こすことがあります。</p><h2 id="1c749c84-6645-8008-a8db-c071e6f30e06" class=""><strong>3-6. IDN Homoglyph Attack（国際化ドメイン名ホモグリフ攻撃）</strong></h2><hr id="1c749c84-6645-806c-a6f7-f0c6a4000001"/><p id="1c749c84-6645-8022-957a-cb1efb3672e5" class="">Unicodeには、見た目が似ているが異なるコードポイントを持つ文字（ホモグリフ）が存在します。攻撃者はこれを利用し、例えば <code>paypal.com</code> に似せた <code>раураl.com</code>（キリル文字）といったフィッシングサイトを作成することができます。</p><h2 id="1c749c84-6645-80af-a0e1-fd24299680c9" class=""><strong>4. 「Unicode禁止」の本当の意味</strong></h2><hr id="1c749c84-6645-8027-b31b-e6330b3d74a3"/><p id="1c749c84-6645-8065-b075-f1a0b2140db0" class="">「Unicode禁止」とは、<strong>UTF-8やUTF-16などのUnicodeベースの文字コード全体を禁止することではなく、特定のUnicode攻撃を防ぐための対策を指すもの</strong>です。</p><p id="1c749c84-6645-8083-8225-f9219ced7b76" class="">具体的には、以下のような対策が求められます。</p><h3 id="1c749c84-6645-8029-9993-ffcbfd01fc6e" class=""><strong>4-1. エスケープシーケンスの適切な処理</strong></h3><p id="1c749c84-6645-80db-ae2a-db9415b7401c" class=""><strong>Unicodeエスケープのフィルタリング</strong></p><h3 id="1c749c84-6645-80da-946e-ffd62e9cc212" class=""><strong>4-2. バッファオーバーフローの防止</strong></h3><p id="1c749c84-6645-802f-a91f-db169e94739e" class=""><strong>入力文字列の長さチェックとメモリ管理の適正化</strong></p><h3 id="1c749c84-6645-804a-90d5-e1bbb773d3f3" class=""><strong>4-3. ノーマライゼーション攻撃への対策</strong></h3><p id="1c749c84-6645-8020-a597-f4d710f35c8d" class=""><strong>入力データをNFCまたはNFDで統一</strong></p><h3 id="1c749c84-6645-8033-9d6e-d090c553067c" class=""><strong>4-4. サロゲートペアの適切な処理</strong></h3><p id="1c749c84-6645-801a-8550-cfc23e52c492" class=""><strong>UTF-16の正しい解析とバリデーション</strong></p><h3 id="1c749c84-6645-805a-a813-f4df3fb62195" class=""><strong>4-5. IDNホモグリフ攻撃の防止</strong></h3><p id="1c749c84-6645-8074-a825-eb79e73231ed" class=""><strong>ドメイン名のホモグリフフィルタリング</strong></p><p id="1c749c84-6645-80e8-a982-f2c43c95dd23" class="">また、<strong>Homoglyph（ホモグリフ）やUnicode RTL（Right to Left）の一部を許可するケース</strong>もあります。例えば、正規の国際化ドメイン名（IDN）を扱う必要がある場合や、アラビア語・ヘブライ語などRTL言語の慎重な管理が求められます。</p><h1 id="1d349c84-6645-80ac-9d9f-f74cde838596" class="">5.実際にあった例</h1><h3 id="1d349c84-6645-80bd-9057-fb5becbb7f60" class="">5-1. シンハラ語の文字列バグ（2018年）</h3><p id="1d349c84-6645-80a4-9d53-c4ef694d3e41" class="">• CVE：CVE-2018-4124<br/>• 原因：<br/>• iOSのCoreTextが特定のシンハラ語の文字列を処理できず、無限ループやメモリ破損を引き起こす。<br/>• 実例：<br/>• iPhoneが特定のシンハラ語の文字を含むメッセージを受信すると、メッセージアプリがクラッシュ。<br/>• iOS 11.3で修正。<br/></p><h3 id="1d349c84-6645-80b3-9d74-d91be9a6e827" class="">5-2. テルグ語の文字列バグ（2018年）</h3><p id="1d349c84-6645-80c4-84bd-fd57544db7eb" class="">• CVE：CVE-2018-4124（シンハラ語と同じCVE）<br/>• 原因：<br/>• CoreTextが特定のテルグ語の文字を適切に処理できずクラッシュ。<br/>• 実例：<br/>• メッセージや通知センターで受信した際にフリーズまたはクラッシュ。<br/>• iOS 11.2.6で修正。<br/></p><h3 id="1d349c84-6645-80a7-80e9-c6b186dfbedf" class="">5-3. ブラックドットバグ（2018年）</h3><p id="1d349c84-6645-80a8-bc9b-ea3bda6e644e" class="">• CVE：なし（特定のCVEは確認されていない）<br/>• 原因：<br/>• 特定のゼロ幅非接合子（ZWJ）を含む文字列が、メッセージアプリやブラウザのレンダリングをフリーズさせる。<br/>• 実例：<br/>• 「⚫️⬛️」＋ZWJの組み合わせを受信すると、iPhoneのメッセージアプリがフリーズ。<br/>• iOS 11.4で修正。<br/></p><h3 id="1d349c84-6645-8088-b6fa-d69d30747009" class="">5-4. イタリア国旗＋ゼロ幅非接合子（2019年）</h3><p id="1d349c84-6645-80bb-bb5a-ebb9a87c42f0" class="">• CVE：なし<br/>• 原因：<br/>• iOSのフォントレンダリングエンジンが、イタリア国旗（🇮🇹）とゼロ幅非接合子（ZWJ）の組み合わせを処理できずクラッシュ。<br/>• 実例：<br/>• 特定のSNSやメッセージでこの組み合わせを送信すると、受信者のアプリがクラッシュ。<br/>• iOS 12.3で修正。<br/></p><h3 id="1d349c84-6645-80b1-922a-eddd07bdf1c5" class="">5-5. 特定のアラビア語文字列バグ（2020年）</h3><p id="1d349c84-6645-80d6-aa2c-f5496ae53581" class="">• CVE：CVE-2020-9870<br/>• 原因：<br/>• 特定のアラビア語の文字列（特にディアクリティカルマーク付き）を処理する際にクラッシュ。<br/>• 実例：<br/>• Safariやメッセージアプリで特定のアラビア語文字列を表示するとフリーズ。<br/>• iOS 13.5.1で修正。<br/></p><h3 id="1d349c84-6645-800d-8698-d32732ea285e" class="">5-6. 「Taiwan」絵文字バグ（2018年）</h3><p id="1d349c84-6645-8081-971e-fb3f4bd00a02" class="">• CVE：なし<br/>• 原因：<br/>• 中国地域の設定で「台湾」関連の文字や絵文字を表示しようとするとバグが発生。<br/>• 実例：<br/>• iOSデバイスが中国のロケール設定になっていると、台湾国旗（🇹🇼）を含むテキストがクラッシュの原因に。<br/>• iOS 11.4.1で修正。<br/></p><h3 id="1d349c84-6645-807a-8323-dea16734017b" class="">5-7. Punycode URLバグ（2017年）</h3><p id="1d349c84-6645-80f1-a318-e8d4eafd666f" class="">• CVE：CVE-2017-7007<br/>• 原因：<br/>• SafariのPunycode処理の不具合で、特定のUnicodeドメインを使ったフィッシングが可能。<br/>• 実例：<br/>• 「xn–<br/><a href="http://pple-43d.com/">pple-43d.com</a>」などのドメインを使用すると、「<a href="http://apple.com/">apple.com</a>」と誤認されるフィッシング攻撃が可能。<br/>• iOS 10.3.3で修正。<br/></p><h3 id="1d349c84-6645-8028-8c23-e0820b312b1b" class="">5-8. 「Zalgo Text」バグ（2021年）</h3><p id="1d349c84-6645-80d0-8464-d2e2d3e8d4ab" class="">• CVE：なし<br/>• 原因：<br/>• 極端に多くの合成文字（ダイアクリティカルマーク）を含むテキストを処理しようとすると、メモリオーバーフローが発生。<br/>• 実例：<br/>• 特定の「Zalgo Text」をメッセージやSNSで送信すると、アプリがクラッシュ。<br/>• iOS 14.5で修正。<br/></p><h3 id="1d349c84-6645-80ea-8a78-d8d982ddfe23" class="">5-9. ゼロ幅スペース「ZWSP」連打バグ（2019年）</h3><p id="1d349c84-6645-80c1-aeae-ddc095aa672f" class="">• CVE：なし<br/>• 原因：<br/>• 長いゼロ幅スペース（ZWSP）の連続がテキスト処理を圧迫し、アプリがクラッシュ。<br/>• 実例：<br/>• メッセージに多数のZWSPを含めると、表示時にフリーズ。<br/>• iOS 13で修正。<br/></p><h3 id="1d349c84-6645-804b-aafa-f5c85e610111" class="">5-10. 特定の「文字の組み合わせ」によるクラッシュバグ（2020年）</h3><p id="1d349c84-6645-8028-97b0-f72e20e00d98" class="">• CVE：なし<br/>• 原因：<br/>• 特定の言語（アラビア語、ヒンディー語など）の文字列がiOSのレンダリングエンジンをクラッシュさせる。<br/>• 実例：<br/>• 特定のSNSで文字を送信すると、アプリやデバイスがフリーズ。<br/>• iOS 13.4で修正。<br/></p><h3 id="1d349c84-6645-80c5-9c44-c050a2b4b644" class="">5-11. VS16（バリアントセレクター16）を含む文字列バグ（2016年）</h3><p id="1d349c84-6645-80ba-bc70-cd61945e0212" class="">• CVE：なし<br/>• 原因：<br/>• Unicodeのバリアントセレクター（VS16）を含む特定の文字列が、iOSのテキストレンダリングを破壊。<br/>• 実例：<br/>• メッセージで特定のVS16文字を送信すると、受信者のデバイスがフリーズ。<br/>• iOS 9.3.5で修正。<br/></p><h3 id="1d349c84-6645-8052-96e0-eb03efd97cf7" class="">5-12. Unicode「トルコ語の&quot;i&quot;」バグ（2013年）</h3><p id="1d349c84-6645-80b2-9e88-dbde41291e1b" class="">• CVE：なし<br/>• 原因：<br/>• iOSのフォントレンダリングが「i」と「İ」（大文字のトルコ語アイ）を正しく区別できず、クラッシュを引き起こす。<br/>• 実例：<br/>• 一部のアプリで特定のトルコ語の文字を使用すると、アプリがクラッシュ。<br/>• iOS 7で修正。<br/></p><h3 id="1d349c84-6645-8037-b676-ec962cde00bc" class="">5-13. Unicode「LRI（Left-to-Right Isolate）」バグ（2015年）</h3><p id="1d349c84-6645-80e8-9a58-faf7278d131e" class="">• CVE：CVE-2015-1140<br/>• 原因：<br/>• 特定のUnicode制御文字（LRI、RLIなど）を適切に処理できず、アプリがクラッシュ。<br/>• 実例：<br/>• メッセージでLRIを大量に含むテキストを送信すると、受信者のアプリがクラッシュ。<br/>• iOS 8.4で修正。<br/></p><p id="1d349c84-6645-8001-a8c3-c6266b43e075" class=""><strong>これらのバグは一部の例であり、実際には無数に存在します。そのため、Unicodeを悪用する行為を禁止とさせていただきます。</strong></p><h1 id="1c749c84-6645-8060-ab6d-f8698c2b212e" class=""><strong>6. まとめ</strong></h1><hr id="1c749c84-6645-807e-9412-caf0b78dff1d"/><p id="1c749c84-6645-80eb-b0b4-e3cdaef05e7e" class="">Unicodeは、世界中の文字を統一的に扱うための重要な規格ですが、その特性を悪用した攻撃も存在します。そのため、「Unicode禁止」とは、<strong>特定のUnicode関連攻撃を防ぐための対策を指す</strong>ものであり、UTF-8などのUnicodeエンコーディングを完全に禁止するものではありません。</p><p id="1c749c84-6645-806c-9c2e-f14f5a337a60" class=""><strong>Unicodeは「特殊記号の集まり」ではなく、文字コードの標準規格</strong></p><p id="1c749c84-6645-8018-9c7d-c790a300e285" class=""><strong>Unicode禁止＝Unicodeのすべてを禁止するわけではない</strong></p><p id="1c749c84-6645-8042-bd46-c0f783023bfc" class=""><strong>Unicodeを悪用した攻撃（エスケープ攻撃、バッファオーバーフロー、ホモグリフ攻撃など）に注意</strong></p><p id="1c749c84-6645-80f9-abec-fea378daa56d" class=""><strong>一部のUnicode機能（Homoglyph, RTL）は慎重に取り扱う</strong></p><h1 id="1d349c84-6645-8054-bda6-ebc70c7208ea" class="">7. 最後に</h1><hr id="1d349c84-6645-8053-a06c-e6049222c089"/><p id="1d349c84-6645-805a-82e6-fc5412516335" class="">一応どのUnicodeがダメなのか、というのを簡易的ですがわかるものを作成しました。</p><p id="1d349c84-6645-8090-9a6d-eea1e512ef31" class="">ご自由にご活用ください。</p><figure id="1d349c84-6645-80bc-ae6c-f35f8e258246"><a href="https://openmura.github.io/utf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Unicode解析ツール</div></div><div class="bookmark-href">https://openmura.github.io/utf</div></div></a></figure><p id="1d349c84-6645-8023-822a-de2fda85d98c" class="">解析項目は、以下のものです。</p><ul id="1d349c84-6645-80f8-9eca-cb17159d5b58" class="bulleted-list"><li style="list-style-type:disc"><strong>制御文字</strong>：表示制御に使われるUnicode（例：ZWSP、Bidi制御）が含まれていると、見た目に影響し、フィッシングなどに悪用される可能性があります。</li></ul><ul id="1d349c84-6645-806f-8ca0-dcf003b32010" class="bulleted-list"><li style="list-style-type:disc"><strong>結合文字</strong>：Zalgo文字などのように、文字の上や下に装飾が無限に重なるような不正利用に繋がります。</li></ul><ul id="1d349c84-6645-801c-8ff8-d1237b0da4e9" class="bulleted-list"><li style="list-style-type:disc"><strong>双方向制御文字（Bidi）</strong>：表示の順序を変更させ、ソースコードと見た目を乖離させるような攻撃手法（トロイの源泉）に利用されます。</li></ul><ul id="1d349c84-6645-80c2-8132-f034a0b97e63" class="bulleted-list"><li style="list-style-type:disc"><strong>ファイル名やURLらしさ</strong>：data URIや実行ファイル風の文字列が含まれている場合、悪意のあるリンクを偽装している可能性があります。</li></ul><ul id="1d349c84-6645-80c7-8a0c-e4589d9aa591" class="bulleted-list"><li style="list-style-type:disc"><strong>同一文字の連続</strong>：同じ文字が10回以上繰り返されると、クラッシュや無限レンダリングの原因になることがあります。</li></ul><ul id="1d349c84-6645-8063-ad79-cabd88adb7fe" class="bulleted-list"><li style="list-style-type:disc"><strong>頻出文字</strong>：特定の文字が不自然に多く出現している場合、スパムや攻撃の兆候と見なせます。</li></ul><ul id="1d349c84-6645-8098-92d7-eac63668af4e" class="bulleted-list"><li style="list-style-type:disc"><strong>長すぎ</strong>：5000文字以上あると、処理や描画の負荷が高く、アプリがフリーズする原因になります。</li></ul><p id="1d349c84-6645-8035-857a-dd900bc09e7c" class="">
+    </p><p id="1d349c84-6645-8050-be1a-c571d69b80a6" class="">copyright 2025 飛行機</p><p id="1d349c84-6645-8043-9764-d3b73bb53f05" class="">
+    </p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

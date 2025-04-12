@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Unicode解析ツール</title>
-  <style>
-    body { font-family: sans-serif; padding: 1em; }
-    textarea { width: 100%; height: 6em; }
-    pre { background: #eee; padding: 1em; white-space: pre-wrap; word-break: break-all; }
-    .danger { color: red; }
-    .safe { color: green; }
-  </style>
+<meta charset="UTF-8">
+<title>Unicode 解析ツール</title>
+  <link rel="stylesheet" href="styles/utf.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
 
-<h2>Unicode解析ツール</h2>
-<textarea id="input" placeholder="文字を入力..."></textarea>
-<button onclick="analyze()">解析</button>
+<h2>Unicode検出ツール ver. 6</h2>
 
+<a href="unicode.html">Unicodeって何なのか分からない人</a>
+<p>↑ 分かる人でも見て下さい。</p>
+<br>
+
+<textarea id="input" placeholder="ここにUnicode文字列を入力してください…"></textarea>
+<button onclick="analyze()">解析する</button>
+
+<h3>解析結果</h3>
 <pre id="output"></pre>
 
-<script src="path/to/graphemesplitter.min.js"></script>
 <script src="scripts/utf.js"></script>
+<div class="explanation">
+  <h2>解析項目の説明</h2>
+  <ul>
+    <li><strong>制御文字</strong>：表示制御に使われるUnicode（例：ZWSP、Bidi制御）が含まれていると、見た目に影響し、フィッシングなどに悪用される可能性があります。</li>
+    <li><strong>結合文字</strong>：Zalgo文字などのように、文字の上や下に装飾が無限に重なるような不正利用に繋がります。</li>
+    <li><strong>双方向制御文字（Bidi）</strong>：表示の順序を変更させ、ソースコードと見た目を乖離させるような攻撃手法（トロイの源泉）に利用されます。</li>
+    <li><strong>ファイル名やURLらしさ</strong>：data URIや実行ファイル風の文字列が含まれている場合、悪意のあるリンクを偽装している可能性があります。</li>
+    <li><strong>同一文字の連続</strong>：同じ文字が10回以上繰り返されると、クラッシュや無限レンダリングの原因になることがあります。</li>
+    <li><strong>頻出文字</strong>：特定の文字が不自然に多く出現している場合、スパムや攻撃の兆候と見なせます。</li>
+    <li><strong>長すぎ</strong>：5000文字以上あると、処理や描画の負荷が高く、アプリがフリーズする原因になります。</li>
+  </ul>
+</div>
 
 </body>
 </html>
