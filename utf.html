@@ -1,59 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>Unicode 安全性チェッカー</title>
-<style>
-    body { font-family: sans-serif; padding: 2rem; background: #f7f7f7; }
-    textarea { width: 100%; height: 100px; font-size: 1rem; }
-    pre { background: #eee; padding: 1rem; white-space: pre-wrap; }
-    .danger { color: red; font-weight: bold; }
-</style>
-  <script src="https://cdn.jsdelivr.net/npm/grapheme-splitter@1.0.4/build/grapheme-splitter.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Unicode解析ツール</title>
+  <style>
+    body { font-family: sans-serif; padding: 1em; }
+    textarea { width: 100%; height: 6em; }
+    pre { background: #eee; padding: 1em; white-space: pre-wrap; word-break: break-all; }
+    .danger { color: red; }
+    .safe { color: green; }
+  </style>
 </head>
 <body>
 
-<h2>Unicode検出ツール</h2>
-
+<h2>Unicode解析ツール</h2>
 <textarea id="input" placeholder="文字を入力..."></textarea>
 <button onclick="analyze()">解析</button>
 
 <pre id="output"></pre>
 
+<script src="path/to/graphemesplitter.min.js"></script>
 <script src="scripts/utf.js"></script>
-<h1>文字列安全性チェッカー</h1>
 
-<p>
-このツールは、ユーザーが入力した文字列に対して、
-<strong>制御文字</strong>・<strong>結合文字（Zalgo文字）</strong>・
-<strong>双方向制御文字（Bidi）</strong>・
-<strong>ファイル名やURLっぽい文字列</strong>などを検出し、
-クラッシュや誤動作の原因となりうる不正な文字列を識別します。
-</p>
-
-<h2>主な機能</h2>
-<ul>
-  <li>
-    <strong>結合文字の検出</strong><br>
-    Unicodeの範囲 <code>U+0300</code>～<code>U+036F</code> に該当するZalgo文字などを検出します。
-  </li>
-  <li>
-    <strong>制御文字や異常Unicodeの検出</strong><br>
-    以下のような特殊な文字を検出します:
-    <ul>
-      <li><code>U+200B</code>～<code>U+200F</code>（ZWSP、LRM、RLMなど）</li>
-      <li><code>U+202A</code>～<code>U+202E</code>（双方向制御文字）</li>
-      <li><code>U+FFFE</code>, <code>U+FFFF</code>（非文字）</li>
-    </ul>
-  </li>
-  <li>
-    <strong>ファイル名やURLっぽい文字列の検出</strong><br>
-    <code>.exe</code>, <code>.jpg</code>, <code>file://</code>, <code>data:</code> などのパターンを含む場合、危険と判定します。
-  </li>
-  <li>
-    <strong>文字列長のチェック</strong><br>
-    5000文字を超える長すぎる文字列を警告します。
-  </li>
-</ul>
 </body>
 </html>
