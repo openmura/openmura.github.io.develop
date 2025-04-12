@@ -9,15 +9,15 @@
     pre { background: #eee; padding: 1rem; white-space: pre-wrap; }
     .danger { color: red; font-weight: bold; }
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/grapheme-splitter@1.0.4/build/grapheme-splitter.min.js"></script>
 </head>
 <body>
 
-<h2>Unicode クラッシュ・バグ検出ツール</h2>
+<h2>Unicode検出ツール</h2>
 
-<textarea id="input" placeholder="ここにUnicode文字列を入力してください…"></textarea>
-<button onclick="analyze()">解析する</button>
+<textarea id="input" placeholder="文字を入力..."></textarea>
+<button onclick="analyze()">解析</button>
 
-<h3>解析結果</h3>
 <pre id="output"></pre>
 
 <script src="scripts/utf.js"></script>
