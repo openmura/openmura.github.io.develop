@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ランダムセリフ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+    .quote {
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quote" id="quoteBox">
+    ここにランダムなセリフが表示されます
+    <br>
+    <button onclick="showRandomSentence()">もう一回！</button>
+  </div>
+
+  <script>
+    const sentences = [
+      "楽器を神聖なものだと思ったことは一度も無いね",
+      "夢の中でスタック細胞を見つけます！",
+      "チリチリバンバン",
+      "バグだよ",
+      "And time won’t stay time goes by",
+      "メンバー以外も愛してるぜ",
+      "気候変動のような問題はセクシーでなければならない",
+      "it’s not the end, not even beginning",
+      "今のままではいけないと思います。だからこそ日本は今のままではいけないと思っている。",
+      "おれんじじゅーーーす！！",
+      "小麦粉の味しかしないんでね",
+      "あ、ちなみに、フォートナやってまーす",
+      "頭痛が痛い",
+      "コロッケっ",
+      "見よ、この見事なまでのZEROを",
+      "イケメンはアホであれ",
+      "発動後5ターン内のナンパ数が増える。",
+      "Power is power",
+      "メイドという名の秘書が欲しかった",
+      "I’m becoming this all I want to do",
+      "1時間に1回筋トレ",
+      "食事はタンパク質のみ",
+      "睡眠第一",
+      "追い込みは週1でやる",
+      "みんなで目指そう健康ぼでぃー",
+      "飲み物はプロテインのみ",
+      "きんにくつけよ！",
+      "楽器を吹きながら筋トレ",
+      "ﾇﾝｯしかのこのこのここしたんたん",
+      "私女の子ー",
+      "その日、人類は思い出した【サラダは歯を磨くものではなく食べるものなのだと]",
+      "なつとは、moonyです。",
+      "右足を出して、左足出すと歩けるんですよ",
+      "そうだよ",
+      "管理人はアホであれ",
+      "ゆばは人間です",
+      "今は家です。",
+      "靴を脱いだら靴を履けるようになるんです",
+      "カップラーメン温めますか？",
+      "ちっ 左翼かよ、俺？うん、もちろん左翼だわ。",
+      "うわ 右翼かよ、僕？うん、右翼だよ。",
+      "時間差ウズベキスタン",
+      "小指ダンス",
+      "株式会社キッツ",
+      "ジムワイパーは近距離武器です。！",
+      "夜の始まりさ、たけーはぁら\nオプわたぁす無謀さに\n突きおとーす反対に\n無知に乾杯\n伝えられなくても"
+    ];
+
+    function showRandomSentence() {
+      const randomIndex = Math.floor(Math.random() * sentences.length);
+      document.getElementById("quoteBox").innerHTML = sentences[randomIndex] + '<br><button onclick="showRandomSentence()">もう一回！</button>';
+    }
+
+    window.onload = showRandomSentence;
+  </script>
+
+</body>
+</html>
